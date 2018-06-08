@@ -1,0 +1,20 @@
+//化工主导航二级菜单
+$(function () {
+    var mainWidth = $(".main-nav").attr("offsetWidth");
+    $(".main-nav li").hover(function () {
+        if ($(this).find(".bd").length != 0) {
+            $(this).addClass("active");
+            $(this).css("z-index", 1000).find(".bd").show();
+            var pos = getElementPos($(this).children()[0]);
+            if (pos.x + 430 > mainWidth) {
+                $(this).find(".bd").css("left", "auto");
+                $(this).find(".bd").css("right", 0);
+            }
+        }
+    }, function () {
+        if ($(this).find(".bd").length != 0) {
+            $(this).removeClass("active");
+            $(this).css("z-index", 1).find(".bd").hide();
+        }
+    })
+})
